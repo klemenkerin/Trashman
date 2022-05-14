@@ -1,3 +1,4 @@
+
 var map = L.map('map');
 var tiles;
 var lokacija;
@@ -22,4 +23,53 @@ map.on('click', function(e) {
         lokacija = new L.marker(e.latlng).addTo(map);
     else
         lokacija.setLatLng(e.latlng);
+});
+
+$( "#closeLoginModal" ).click(function() {
+    $('#LoginModal').modal('hide');
+});
+
+$( "#closeRegisterModal" ).click(function() {
+    $('#RegisterModal').modal('hide');
+});
+
+$('#login').on('submit', function(e) {
+    e.preventDefault();
+    url=""
+    data = {"username": $('#usernameLogin').val(),"password": $('#passwordLogin').val()};
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    });
+
+    $('#usernameLogin').val("");
+    $('#passwordLogin').val("");
+    $('#LoginModal').modal('hide');
+});
+
+$('#register').on('submit', function(e) {
+    e.preventDefault();
+    url=""
+    data = {"username": $('#usernameRegister').val(),"password": $('#passwordRegister').val()};
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    });
+
+    $('#usernameRegister').val("");
+    $('#passwordRegister').val("");
+    $('#RegisterModal').modal('hide');
+});
+
+$('#spotForm').on('submit', function(e) {
+    e.preventDefault();
+    url=""
+    data = {"lat": $('#lat').val(),"lng": $('#lng').val(),"cleaned": false};
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    });
 });
