@@ -1,7 +1,8 @@
-
 var map = L.map('map');
 var tiles;
 var lokacija;
+
+var coor = {};
 
 navigator.geolocation.getCurrentPosition(createMap);
 
@@ -18,10 +19,27 @@ function createMap(position) {
     }).addTo(map);
 }
 
+
+
 map.on('click', function(e) {
-    if(lokacija == null)
+    if (lokacija == null) {
         lokacija = new L.marker(e.latlng).addTo(map);
-    else
+        coor = e.latlng;
+        $("#cpy-btn").css('background-color','#1abc9c');
+        $("#cpy-btn").css('color','white');
+        $("#cpy-btn").css('pointer-events','all');
+    } else {
         lokacija.setLatLng(e.latlng);
+        coor = e.latlng;
+        $("#cpy-btn").css('background-color','#1abc9c');
+        $("#cpy-btn").css('color','white');
+        $("#cpy-btn").css('pointer-events','all');
+    }
+});
+
+$("#cpy-btn").on("click", function(e) {
+    console.log(coor);
+    $("#lat").val(coor.lat);
+    $("#lon").val(coor.lng);
 });
 

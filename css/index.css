@@ -1,14 +1,11 @@
-.rob {
-    border: 1px solid transparent;
-    border-color: #c30c21;
-    border-radius: 4px;
-  }
-  
-  .senca {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-
 #map {
   width: 100%;
   min-height: 600px
+}
+
+.cpy-btn {
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    width:300px;
 }

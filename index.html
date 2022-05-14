@@ -21,6 +21,8 @@
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
         <link rel="stylesheet" type="text/css" href="./css/index.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -67,12 +69,11 @@
                     <div class="divider-custom-line"></div>
                 </div>
 
-
                 <!-- Portfolio Grid Items-->
-                
-                
-                <div id="map"></div>   
-
+                <div id="map"></div>
+                <a class="btn btn-xl cpy-btn" id="cpy-btn" href="#form" style="background-color: #F0F0F0; color: black; pointer-events: none;" disabled>
+                    COPY COORDINATES
+                </a>
                 
             </div>
         </section>
@@ -90,7 +91,7 @@
                 
                 <div class="row">
                     <div class="col-lg-4 ms-auto"><p class="lead">Creating app for tomorrow. Have you ever been walking in nature and instead of being inspired you have walked up to a bunch of trash. So today we are finaly able to
-                        offer you the solution. We made an app where you can report wild dupms and a community of users will help the environment by cleaning them. </p></div>
+                        offer you the solution. We made an app where you can report wild dupms and a community of users will help the environment by cleaning them.</p></div>
                     <div class="col-lg-4 me-auto"><p class="lead">To make thing more interesting 
                         every time you report a new wild dump you will be rewarded with pointts which will rank you compared to other users. Join us on a path to a cleaner comunity.</p></div>
                 </div>
@@ -121,7 +122,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
                        
-                        <form id="spotForm">
+                        <form id="spotForm" action="/form" method="post">
                             <!-- Lat input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="lat" type="text" placeholder="Enter latitude" />
@@ -187,11 +188,5 @@
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
         <script src="js/index.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
     </body>
 </html>
