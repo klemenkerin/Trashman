@@ -19,8 +19,6 @@ function createMap(position) {
     }).addTo(map);
 }
 
-
-
 map.on('click', function(e) {
     if (lokacija == null) {
         lokacija = new L.marker(e.latlng).addTo(map);
