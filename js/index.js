@@ -1,3 +1,4 @@
+
 var map = L.map('map');
 var tiles;
 var lokacija;
@@ -38,6 +39,56 @@ map.on('click', function(e) {
 $("#cpy-btn").on("click", function(e) {
     console.log(coor);
     $("#lat").val(coor.lat);
-    $("#lon").val(coor.lng);
+    $("#lng").val(coor.lng);
+});
+
+$( "#closeLoginModal" ).click(function() {
+    $('#LoginModal').modal('hide');
+});
+
+$( "#closeRegisterModal" ).click(function() {
+    $('#RegisterModal').modal('hide');
+});
+
+$('#login').on('submit', function(e) {
+    e.preventDefault();
+    url=""
+    data = {"username": $('#usernameLogin').val(),"password": $('#passwordLogin').val()};
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    });
+
+    $('#usernameLogin').val("");
+    $('#passwordLogin').val("");
+    $('#LoginModal').modal('hide');
+});
+
+$('#register').on('submit', function(e) {
+    e.preventDefault();
+    url=""
+    data = {"username": $('#usernameRegister').val(),"password": $('#passwordRegister').val()};
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    });
+
+    $('#usernameRegister').val("");
+    $('#passwordRegister').val("");
+    $('#RegisterModal').modal('hide');
+});
+
+$('#spotForm').on('submit', function(e) {
+    e.preventDefault();
+    url="/post"
+    data = {"lat": $('#lat').val(),"lng": $('#lng').val(),"cleaned": false};
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    });
+    console.log(data);
 });
 

@@ -13,7 +13,6 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
         integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
@@ -24,6 +23,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+        <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -36,13 +36,76 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#trashmap">Trashmap</a></li>                        
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#trashmap">Trashmap</a></li>                  
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#form">Form</a></li>
+
+                        <li class="nav-item mx-0 mx-lg-1"><a type="button" class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#LoginModal">Login</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a type="button" class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#RegisterModal">Register</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- Login -->
+        <div id="LoginModal" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <form id="login" action="#" method="post">
+                        <div class="modal-header">              
+                            <h4 class="modal-title">Login</h4>
+                            <button type="button" id="closeLoginModal" class="btn-close" data-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">                
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input id="usernameLogin" type="text" class="form-control" required="required">
+                            </div>
+                            <div class="form-group">
+                                <div class="clearfix">
+                                    <label>Password</label>
+                                </div>
+                                
+                                <input id="passwordLogin" type="password" class="form-control" required="required">
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <input type="submit" class="btn btn-primary" value="Login">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register -->
+        <div id="RegisterModal" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <form id="register" action="#" method="post">
+                        <div class="modal-header">              
+                            <h4 class="modal-title">Register</h4>
+                            <button type="button" id="closeRegisterModal" class="btn-close" data-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">                
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input id="usernameRegister" type="text" class="form-control" required="required">
+                            </div>
+                            <div class="form-group">
+                                <div class="clearfix">
+                                    <label>Password</label>
+                                </div>
+                                
+                                <input id="passwordRegister" type="password" class="form-control" required="required">
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <input type="submit" class="btn btn-primary" value="Register">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
@@ -114,7 +177,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
                        
-                        <form id="spotForm" action="/form" method="post">
+                        <form id="spotForm" action="#" method="post">
                             <!-- Lat input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="lat" type="text" placeholder="Enter latitude" />
@@ -122,7 +185,7 @@
                             </div>
                             <!-- Lon input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="lon" type="text" placeholder="Enter longitude" />
+                                <input class="form-control" id="lng" type="text" placeholder="Enter longitude" />
                                 <label for="name">Longitude</label>
                             </div>
                             
@@ -132,7 +195,7 @@
                                 </div>
                             </div>
                             
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                            <div class="d-none" id="submitErrcorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             <!-- Submit Button-->
                             <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Send</button>
                         </form>
@@ -140,6 +203,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
@@ -179,6 +243,9 @@
         <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="js/index.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>
